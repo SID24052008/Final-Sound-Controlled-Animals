@@ -8,6 +8,12 @@ function modelReady(){
     classifier.classify(gotResults);
 }
 
+var dog= 0;
+var cat= 0;
+var cow= 0;
+var lion= 0;
+
+
 function gotResults(error,results){
     if(error){
         console.error(error);
@@ -30,15 +36,18 @@ img2= document.getElementById('cow');
 img3= document.getElementById('dog');
 img4= document.getElementById('lion');
 
-if(results[0].label=="Meowing"){
+if (results[0].label=="Meowing"){
     img1.src='cat.jpg';
-}
-else if(results[0].label=="Mooing"){
+    cat= cat+1;
+} else if(results[0].label=="Mooing"){
     img2.src='cow.jpg';
-}
-else if(results[0].label=="Barking"){
+    cow= cow+1;
+} else if(results[0].label=="Barking"){
     img3.src='dog.jpg';
-}
-else{
+    dog= dog+1;
+} else if(results[0].label=="Roar"){
     img4.src='lion.jpg';
+    lion= lion+1;
+} else{
+    img.src= "Ear.gif";
 }
